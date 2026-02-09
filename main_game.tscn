@@ -1,8 +1,155 @@
 [gd_scene format=3 uid="uid://dvsaor60468g7"]
 
-[node name="mainGame" type="Node" unique_id=791202414]
+[ext_resource type="Script" uid="uid://ei7niv36dlx5" path="res://main_game.gd" id="1_ykeeq"]
+[ext_resource type="FontFile" uid="uid://dgj0hphujrrtl" path="res://Abaddon_Fonts_v1.2/Abaddon Bold.ttf" id="2_6bm6p"]
+[ext_resource type="Script" uid="uid://d1xvao2lfudk2" path="res://start_button.gd" id="3_dugkq"]
+[ext_resource type="Texture2D" uid="uid://b3ovr1d6v2jpi" path="res://pixil-frame-0 (3).png" id="4_6bm6p"]
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=560802795]
+[node name="mainGame" type="Node" unique_id=791202414]
+script = ExtResource("1_ykeeq")
+
+[node name="background" type="ColorRect" parent="." unique_id=560802795]
 offset_right = 1152.0
 offset_bottom = 648.0
-color = Color(0.86955434, 0.9165094, 0.9484094, 1)
+color = Color(0.7935175, 0.8584739, 0.9083634, 1)
+
+[node name="scoreText" type="Label" parent="." unique_id=840089195]
+offset_left = 521.0
+offset_top = 164.0
+offset_right = 612.0
+offset_bottom = 193.0
+theme_override_colors/font_color = Color(0.52156866, 0.7254902, 0.92941177, 1)
+theme_override_colors/font_outline_color = Color(0.043137256, 0.23921569, 0.3372549, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("2_6bm6p")
+theme_override_font_sizes/font_size = 25
+text = "SCORE: 0"
+
+[node name="titleText" type="Label" parent="." unique_id=618790066]
+offset_left = 372.0
+offset_top = 95.0
+offset_right = 782.0
+offset_bottom = 173.0
+theme_override_colors/font_color = Color(0.52255183, 0.72436357, 0.9273453, 1)
+theme_override_colors/font_outline_color = Color(0.04498422, 0.23807636, 0.33619505, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("2_6bm6p")
+theme_override_font_sizes/font_size = 69
+text = "MEMORY TILES"
+
+[node name="highScoreButton" type="Label" parent="." unique_id=998492629]
+offset_left = 35.0
+offset_top = 32.0
+offset_right = 227.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(0.52156866, 0.7254902, 0.92941177, 1)
+theme_override_colors/font_outline_color = Color(0.043137256, 0.23921569, 0.3372549, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_6bm6p")
+theme_override_font_sizes/font_size = 33
+text = "HIGH SCORE: 0"
+
+[node name="startButton" type="Button" parent="." unique_id=1831970871]
+offset_left = 474.0
+offset_top = 542.0
+offset_right = 655.0
+offset_bottom = 622.0
+theme_override_colors/font_color = Color(0.52156866, 0.7254902, 0.92941177, 1)
+theme_override_colors/font_outline_color = Color(0.043137256, 0.23921569, 0.3372549, 1)
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("2_6bm6p")
+theme_override_font_sizes/font_size = 63
+text = "START"
+flat = true
+script = ExtResource("3_dugkq")
+
+[node name="Control" type="Control" parent="." unique_id=748380188]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="button1" type="TextureButton" parent="Control" unique_id=1893123911]
+layout_mode = 0
+offset_left = 284.0
+offset_top = 267.0
+offset_right = 384.0
+offset_bottom = 367.0
+texture_normal = ExtResource("4_6bm6p")
+
+[node name="button2" type="TextureButton" parent="Control" unique_id=1830958608]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 267.0
+offset_right = 503.0
+offset_bottom = 367.0
+texture_normal = ExtResource("4_6bm6p")
+
+[node name="button3" type="TextureButton" parent="Control" unique_id=1240701935]
+layout_mode = 0
+offset_left = 521.0
+offset_top = 267.0
+offset_right = 621.0
+offset_bottom = 367.0
+texture_normal = ExtResource("4_6bm6p")
+
+[node name="button4" type="TextureButton" parent="Control" unique_id=932258158]
+layout_mode = 0
+offset_left = 639.0
+offset_top = 267.0
+offset_right = 739.0
+offset_bottom = 367.0
+texture_normal = ExtResource("4_6bm6p")
+
+[node name="button5" type="TextureButton" parent="Control" unique_id=1768088167]
+layout_mode = 0
+offset_left = 757.0
+offset_top = 267.0
+offset_right = 857.0
+offset_bottom = 367.0
+texture_normal = ExtResource("4_6bm6p")
+
+[node name="button6" type="TextureButton" parent="Control" unique_id=501654604]
+layout_mode = 0
+offset_left = 284.0
+offset_top = 394.0
+offset_right = 384.0
+offset_bottom = 494.0
+texture_normal = ExtResource("4_6bm6p")
+
+[node name="button7" type="TextureButton" parent="Control" unique_id=192150632]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.8
+offset_left = 403.0
+offset_top = 394.0
+offset_right = 483.0
+offset_bottom = 462.0
+texture_normal = ExtResource("4_6bm6p")
+
+[node name="button8" type="TextureButton" parent="Control" unique_id=1332566541]
+layout_mode = 0
+offset_left = 521.0
+offset_top = 394.0
+offset_right = 621.0
+offset_bottom = 494.0
+texture_normal = ExtResource("4_6bm6p")
+
+[node name="button9" type="TextureButton" parent="Control" unique_id=359778286]
+layout_mode = 0
+offset_left = 639.0
+offset_top = 394.0
+offset_right = 739.0
+offset_bottom = 494.0
+texture_normal = ExtResource("4_6bm6p")
+
+[node name="button10" type="TextureButton" parent="Control" unique_id=733154291]
+layout_mode = 0
+offset_left = 758.0
+offset_top = 394.0
+offset_right = 858.0
+offset_bottom = 494.0
+texture_normal = ExtResource("4_6bm6p")
+
+[connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
