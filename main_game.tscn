@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dvsaor60468g7"]
+
+[node name="mainGame" type="Node" unique_id=791202414]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=560802795]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.86955434, 0.9165094, 0.9484094, 1)
