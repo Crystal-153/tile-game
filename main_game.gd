@@ -14,6 +14,8 @@ var end=false
 var random=0
 @onready var buttonList=[button1,button2,button3,button4,button5,button6,button7,button8,button9,button10]
 var inputEnabled=false
+var pattern=[]
+var userInput=[]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,24 +23,40 @@ func _ready() -> void:
 		buttonList[i].pressed.connect(on_button_pressed.bind(i))
 		buttonList[i].modulate = Color(0.043, 0.239, 0.337, 0.85)
 	
-	
-
-
 var start=false
 func _on_start_button_pressed() -> void:
 	inputEnabled = false
 
 	random = randi_range(0, 9)
-	buttonList[random].modulate = Color(0.617, 0.781, 0.948, 1.0)
-	await get_tree().create_timer(0.8).timeout
-	buttonList[random].modulate = Color(0.043, 0.239, 0.337, 0.85)
-
+	pattern.append(random)
+	
+	await showPattern()
+	userInput.clear()
 	inputEnabled = true
-		
 
+func showPattern():
+	for index in pattern:
+		buttonList[index].modulate = Color(0.617, 0.781, 0.948, 1.0)
+		await get_tree().create_timer(0.8).timeout
+		buttonList[index].modulate = Color(0.043, 0.239, 0.337, 0.85)
+		await get_tree().create_timer(0.2).timeout
+var currentStep = 0
+	
 func on_button_pressed(index: int) -> void:
+	userInput.append(index)
+	currentStep = userInput.size() - 1
 	if !inputEnabled:
 		return
-	if random!=index:
+	if userInput[currentStep] != pattern[currentStep]:
 		end=false
 		inputEnabled=false
+		pattern=[]
+
+	if userInput.size() == pattern.size():
+		await get_tree().create_timer(0.8).timeout
+		inputEnabled = false
+		pattern.append(random)
+		await showPattern()
+		userInput.clear()
+		inputEnabled = true
+		random = randi_range(0, 9)
