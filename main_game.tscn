@@ -153,3 +153,13 @@ offset_bottom = 494.0
 texture_normal = ExtResource("4_6bm6p")
 
 [connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Control/button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="Control/button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Control/button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Control/button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="Control/button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="Control/button6" to="." method="_on_button_6_pressed"]
+[connection signal="pressed" from="Control/button7" to="." method="_on_button_7_pressed"]
+[connection signal="pressed" from="Control/button8" to="." method="_on_button_8_pressed"]
+[connection signal="pressed" from="Control/button9" to="." method="_on_button_9_pressed"]
+[connection signal="pressed" from="Control/button10" to="." method="_on_button_10_pressed"]

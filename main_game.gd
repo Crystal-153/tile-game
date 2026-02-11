@@ -13,62 +13,32 @@ extends Node
 var end=false
 var random=0
 @onready var buttonList=[button1,button2,button3,button4,button5,button6,button7,button8,button9,button10]
-	
+var inputEnabled=false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	for i in buttonList:
-		i.modulate=Color(0.043, 0.239, 0.337, 0.85)
+	for i in range(buttonList.size()):
+		buttonList[i].pressed.connect(on_button_pressed.bind(i))
+		buttonList[i].modulate = Color(0.043, 0.239, 0.337, 0.85)
+	
 	
 
 
 var start=false
 func _on_start_button_pressed() -> void:
-	start = true
-	if start:
-		end=true
-		while end:
-			random= randi_range(0,9)
-			buttonList[random].modulate=Color(0.617, 0.781, 0.948, 1.0)
-			end=false
-		start=false
+	inputEnabled = false
 
+	random = randi_range(0, 9)
+	buttonList[random].modulate = Color(0.617, 0.781, 0.948, 1.0)
+	await get_tree().create_timer(0.8).timeout
+	buttonList[random].modulate = Color(0.043, 0.239, 0.337, 0.85)
 
-func _on_button_1_pressed() -> void:
-	pass # Replace with function body.
+	inputEnabled = true
+		
 
-
-func _on_button_2_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_button_3_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_button_4_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_button_5_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_button_6_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_button_7_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_button_8_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_button_9_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_button_10_pressed() -> void:
-	pass # Replace with function body.
+func on_button_pressed(index: int) -> void:
+	if !inputEnabled:
+		return
+	if random!=index:
+		end=false
+		inputEnabled=false
