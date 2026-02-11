@@ -10,12 +10,15 @@ extends Node
 @onready var button8=$Control/button8
 @onready var button9=$Control/button9
 @onready var button10=$Control/button10
+@onready var scoreText=$scoreText
+@onready var hsText=$highScoreButton
 var end=false
 var random=0
 @onready var buttonList=[button1,button2,button3,button4,button5,button6,button7,button8,button9,button10]
 var inputEnabled=false
 var pattern=[]
 var userInput=[]
+var correct=0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -41,22 +44,46 @@ func showPattern():
 		buttonList[index].modulate = Color(0.043, 0.239, 0.337, 0.85)
 		await get_tree().create_timer(0.2).timeout
 var currentStep = 0
-	
+var hs=0
 func on_button_pressed(index: int) -> void:
-	userInput.append(index)
-	currentStep = userInput.size() - 1
+	
 	if !inputEnabled:
 		return
+	userInput.append(index)
+	currentStep = userInput.size() - 1
 	if userInput[currentStep] != pattern[currentStep]:
+		if correct>hs:
+			hs=correct
+			hsText.text="HIGH SCORE: "+str(hs)
+		correct=0
+		scoreText.text="SCORE: "+str(correct)
 		end=false
 		inputEnabled=false
 		pattern=[]
+		userInput=[]
+		return
+		
+	if userInput[currentStep] == pattern[currentStep]:
+		if userInput.size() == pattern.size():
+			await get_tree().create_timer(0.8).timeout
+			inputEnabled = false
+			
+			
+			correct+=1
+			
 
-	if userInput.size() == pattern.size():
-		await get_tree().create_timer(0.8).timeout
-		inputEnabled = false
-		pattern.append(random)
-		await showPattern()
-		userInput.clear()
-		inputEnabled = true
-		random = randi_range(0, 9)
+			scoreText.text="SCORE: "+str(correct)
+			if correct>hs:
+				hs=correct
+				hsText.text="HIGH SCORE: "+str(hs)
+				random = randi_range(0, 9)
+			random = randi_range(0, 9)
+			pattern.append(random)
+			
+			userInput.clear()
+			
+			await showPattern()
+			inputEnabled = true
+		
+		
+		
